@@ -15,8 +15,8 @@ public class ClientService {
 
     public Client create(Client client){
 
-        if(repository.existsByName(client.getName())){
-            throw new RuntimeException("Nome já existe");
+        if(repository.existsByEmail(client.getEmail())){
+            throw new RuntimeException("Email já existe");
         }
 
         return repository.save(client);
@@ -25,10 +25,10 @@ public class ClientService {
     public Client update(String id, Client client){
         var clientDataBase = this.getById(id);
 
-            var c = repository.findByName(client.getName());
+            var c = repository.findByEmail(client.getEmail());
 
             if(c != null && !c.getId().equals(id)){
-                throw new RuntimeException("Nome já existe");
+                throw new RuntimeException("Email já existe");
             }
 
             clientDataBase.setName(client.getName());

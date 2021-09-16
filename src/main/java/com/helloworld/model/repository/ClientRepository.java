@@ -5,6 +5,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface ClientRepository extends MongoRepository<Client,String> {
 
-    boolean existsByName(String name);
-    Client findByName(String name);
+    boolean existsByEmail(String email);
+    Client findByEmail(String email);
 }
